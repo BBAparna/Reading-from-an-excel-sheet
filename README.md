@@ -1,1 +1,39 @@
 # Reading-from-an-excel-sheet
+import urllib.request as urllib2
+import urllib.request
+import pandas as pd
+import requests
+import io 
+from bs4 import BeautifulSoup
+import time
+import bs4 as bs
+import re
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords 
+from collections import Counter
+import math
+
+from openpyxl import load_workbook
+
+wb = load_workbook(filename= 'path', 
+                   read_only=True)
+
+ws = wb['Sheet1']
+
+# Read the cell values into a list of lists
+
+data_rows = []
+
+for row in ws['A1':'F140']: # specify the range
+    
+    data_cols = []
+    for cell in row:
+        if cell.value!=None:
+            data_cols.append(cell.value)
+            
+            data_rows.append(data_cols)
+           
+            data = pd.DataFrame(data_cols)
+            #print(data)
+            print(data_rows)     
